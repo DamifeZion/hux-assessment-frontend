@@ -26,7 +26,9 @@ export const Navbar: React.FC<TNavbarProps> = ({ className }) => {
    const [openSheet, setOpenSheet] = React.useState(false);
 
    return (
-      <nav className={cn("bg-background/80 backdrop-blur-xl border-b", className)}>
+      <nav
+         className={cn("bg-background/80 backdrop-blur-xl border-b", className)}
+      >
          <header className="container flex items-center h-16">
             <Logo />
 

@@ -23,7 +23,6 @@ import { routeConstants } from "@/constants/route-const";
 import { EyeClosed, EyeIcon } from "lucide-react";
 import { useSignUp } from "@/hooks/auth/use-signup";
 
-
 const SignUp = () => {
    useSetHelmet("Sign up", [
       {
@@ -42,7 +41,7 @@ const SignUp = () => {
                onSubmit={form.handleSubmit(onSubmit)}
                className="container my-10"
             >
-               <Card className="w-full max-w-sm mx-auto border-none rounded-2xl shadow-[0_0_20px_rgb(0,0,0,0.02)]">
+               <Card className="w-full max-w-sm mx-auto">
                   <CardHeader className="space-y-4">
                      <CardTitle className="text-2xl text-center">
                         Sign up
@@ -90,7 +89,11 @@ const SignUp = () => {
                               <FormControl>
                                  <div className="relative">
                                     <Input
-                                       type={visibility.password ? "text" : "password"}
+                                       type={
+                                          visibility.password
+                                             ? "text"
+                                             : "password"
+                                       }
                                        placeholder="••••••••••"
                                        className="pr-12"
                                        {...field}
@@ -100,7 +103,9 @@ const SignUp = () => {
                                        size="icon"
                                        variant="ghost"
                                        type="button"
-                                       onClick={() => handlePasswordToggle('password')}
+                                       onClick={() =>
+                                          handlePasswordToggle("password")
+                                       }
                                        className="absolute right-0 -translate-y-1/2 top-1/2"
                                     >
                                        {visibility.password ? (
@@ -127,7 +132,11 @@ const SignUp = () => {
                               <FormControl>
                                  <div className="relative">
                                     <Input
-                                       type={visibility.confirmPassword ? "text" : "password"}
+                                       type={
+                                          visibility.confirmPassword
+                                             ? "text"
+                                             : "password"
+                                       }
                                        placeholder="••••••••••"
                                        className="pr-12"
                                        {...field}
@@ -137,7 +146,11 @@ const SignUp = () => {
                                        size="icon"
                                        variant="ghost"
                                        type="button"
-                                       onClick={() => handlePasswordToggle('confirmPassword')}
+                                       onClick={() =>
+                                          handlePasswordToggle(
+                                             "confirmPassword"
+                                          )
+                                       }
                                        className="absolute right-0 -translate-y-1/2 top-1/2"
                                     >
                                        {visibility.confirmPassword ? (

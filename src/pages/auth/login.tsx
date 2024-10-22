@@ -23,7 +23,6 @@ import {
 import { routeConstants } from "@/constants/route-const";
 import { EyeClosed, EyeIcon } from "lucide-react";
 
-
 const Login = () => {
    useSetHelmet("Sign in", [
       {
@@ -42,7 +41,7 @@ const Login = () => {
                onSubmit={form.handleSubmit(onSubmit)}
                className="container my-10"
             >
-               <Card className="w-full max-w-sm mx-auto border-none rounded-2xl shadow-[0_0_20px_rgb(0,0,0,0.02)]">
+               <Card className="w-full max-w-sm mx-auto">
                   <CardHeader className="space-y-4">
                      <CardTitle className="text-2xl text-center">
                         Sign in
