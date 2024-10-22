@@ -1,10 +1,10 @@
 import { motion, Variants } from "framer-motion";
 import { Logo } from "./logo";
-import * as React from 'react';
+import * as React from "react";
 
 type TGlobalLoading = {
    showLogo?: boolean;
-}
+};
 
 const GlobalLoading: React.FC<TGlobalLoading> = ({ showLogo }) => {
    const slideAnimation: Variants = {
@@ -22,9 +22,7 @@ const GlobalLoading: React.FC<TGlobalLoading> = ({ showLogo }) => {
 
    return (
       <div className="flex flex-col items-center justify-center flex-1 gap-4">
-         {showLogo && (
-            <Logo className="animate-pulse" />
-         )}
+         {showLogo && <Logo className="animate-pulse" />}
 
          <div className="h-2.5 p-0.5 rounded-full w-52 bg-[hsl(0,0%,98%)] overflow-hidden">
             <motion.span

@@ -33,7 +33,7 @@ export const typographyVariants = cva("text-md", {
 
 export interface TypographyProps
    extends React.HTMLAttributes<HTMLHeadingElement>,
-   VariantProps<typeof typographyVariants> { }
+      VariantProps<typeof typographyVariants> {}
 
 const Typography = React.forwardRef<HTMLHeadingElement, TypographyProps>(
    ({ className, variant, affects, ...props }, ref) => {

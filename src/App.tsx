@@ -13,7 +13,6 @@ function App() {
          <PersistGate persistor={persistor}>
             <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
                <BrowserRouter>
-
                   <TooltipProvider delayDuration={100}>
                      <Routes />
                   </TooltipProvider>
