@@ -51,7 +51,7 @@ const SignUp = () => {
                         Already have an account?{" "}
                         <Link
                            to={routeConstants.login}
-                           className="font-semibold underline underline-offset-2 hover:text-foreground"
+                           className="underline-offset-2 text-foreground hover:underline"
                         >
                            Sign in
                         </Link>
