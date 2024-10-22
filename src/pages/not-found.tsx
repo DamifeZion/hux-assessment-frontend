@@ -17,13 +17,23 @@ const NotFound = () => {
             </Typography>
 
             <Typography className="max-w-sm text-center text-pretty max-sm:text-sm">
-               Sorry, we couldn’t find the page you’re looking for. Perhaps you’ve mistyped the URL? Be sure to check your spelling.
+               Sorry, we couldn’t find the page you’re looking for. Perhaps
+               you’ve mistyped the URL? Be sure to check your spelling.
             </Typography>
 
-            <img src="/not-found/404.svg" className="mt-5 size-full max-w-xs max-h-[400px]" />
+            <img
+               src="/not-found/404.svg"
+               className="mt-5 size-full max-w-xs max-h-[400px]"
+            />
 
             <Button asChild className="mt-10 font-semibold">
-               <Link to={isAuthenticated ? routeConstants.dashboard : routeConstants.home}>
+               <Link
+                  to={
+                     isAuthenticated
+                        ? routeConstants.dashboard
+                        : routeConstants.home
+                  }
+               >
                   Go to home
                </Link>
             </Button>

@@ -1,32 +1,39 @@
 import { routeConstants } from "./route-const";
 
-type TRoutes = {
+export type TRoutes = {
    url: string;
    title: string;
-   isBtn?: boolean;
-}
+   isButton?: boolean;
+   isAuthRoute: boolean;
+};
 
 const ROUTES: Array<TRoutes> = [
    {
       title: "Home",
       url: routeConstants.home,
+      isButton: false,
+      isAuthRoute: false,
    },
    {
       title: "Contacts",
       url: routeConstants.dashboard,
+      isButton: false,
+      isAuthRoute: true,
    },
    {
       title: "Login",
       url: routeConstants.login,
-      isBtn: true,
+      isButton: true,
+      isAuthRoute: false,
    },
    {
       title: "Sign Up",
       url: routeConstants.signup,
-      isBtn: true,
+      isButton: true,
+      isAuthRoute: false,
    },
-]
+];
 
 export const navbarConst = {
    ROUTES,
-}
+};
