@@ -4,6 +4,7 @@ import { routeConstants } from './constants/route-const';
 import GlobalLoading from './components/global-loading';
 import useScrollToTop from '@/hooks/shared/use-scroll-to-top';
 import { AnimatePresence } from 'framer-motion';
+import { Navbar } from './components/navbar/navbar';
 // import RequireAuth from './middlewares/require-auth';
 
 
@@ -26,6 +27,8 @@ const Routes = () => {
       <AnimatePresence mode='sync'>
          <main className='flex flex-col min-h-screen'>
             <React.Suspense fallback={<GlobalLoading showLogo />}>
+               <Navbar />
+
                <Router>
                   <Route
                      path='*'
@@ -47,13 +50,13 @@ const Routes = () => {
                      element={<SignUp />}
                   />
 
-                
+
                   {/* Auth Pages */}
                   <Route
-                     path={routeConstants.contacts}
+                     path={routeConstants.dashboard}
                      element={
                         // <RequireAuth>
-                           <Contacts />
+                        <Contacts />
                         // </RequireAuth>
                      }
                   />
@@ -62,7 +65,7 @@ const Routes = () => {
                      path={routeConstants.contactDetails}
                      element={
                         // <RequireAuth>
-                           <ContactDetails />
+                        <ContactDetails />
                         // </RequireAuth>
                      }
                   />

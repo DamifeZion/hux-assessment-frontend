@@ -5,6 +5,6 @@ export const routeConstants = {
    signup: "/signup",
 
    /** Authenticated Routes */
-   contacts: "/contact",
+   dashboard: "/contact",
    contactDetails: "/contact/:id",
 };

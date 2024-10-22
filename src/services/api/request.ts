@@ -1,6 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { hunnovateBaseQuery } from "./base-query";
-import { transformErrorResponse } from "@/helpers/transform-rtk-error";
+import { transformErrorResponse } from "@/helpers/transform-rtk-errors";
 
 export type TFetchRequest = {
    url: string;
