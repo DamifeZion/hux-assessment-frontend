@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Navigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/services/store";
 import { setUser } from "@/services/slices/user-slice";
@@ -12,7 +11,6 @@ type TAuthPageProps = {
 };
 
 const AuthPage: React.FC<TAuthPageProps> = ({ children }) => {
-   const location = useLocation();
    const dispatch = useDispatch();
    const { user } = useSelector((state: RootState) => state.userSlice);
    const [isSessionValid, setIsSessionValid] = React.useState<boolean | null>(null);
@@ -41,15 +39,16 @@ const AuthPage: React.FC<TAuthPageProps> = ({ children }) => {
       }
    }, [user, dispatch]);
 
+   // Redirect if session is invalid
+   React.useEffect(() => {
+      if (isSessionValid === false) {
+         window.location.replace(routeConstants.login)
+      }
+   }, [isSessionValid]);
+
    if (isSessionValid === null) {
       return <GlobalLoading />;
    }
-
-   if (isSessionValid === false) {
-      // Invalid session, redirect to login and clear cached data
-      return window.location.replace(routeConstants.login);
-   }
-
    // Session is valid, render the children (protected content)
    return <>{children}</>;
 };
