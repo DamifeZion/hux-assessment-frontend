@@ -23,6 +23,7 @@ const ResetPassword = React.lazy(() => import("@/pages/auth/reset-password"))
 const Contacts = React.lazy(() => import("@/pages/contact/contacts"));
 const AddContact = React.lazy(() => import("@/pages/contact/add-contact"));
 const ContactDetails = React.lazy(() => import("@/pages/contact/contact-details"));
+const EditContact = React.lazy(() => import("@/pages/contact/edit-contact"));
 
 
 const Routes = () => {
@@ -105,6 +106,16 @@ const Routes = () => {
                      element={
                         <AuthPage>
                            <AddContact />
+                        </AuthPage>
+                     }
+                  />
+
+
+                  <Route
+                     path={routeConstants.editContact}
+                     element={
+                        <AuthPage>
+                           <EditContact />
                         </AuthPage>
                      }
                   />

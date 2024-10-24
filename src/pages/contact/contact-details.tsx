@@ -5,9 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardHeader } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import Typography from "@/components/ui/typography";
+import { routeConstants } from "@/constants/route-const";
 import { useContactDetails } from "@/hooks/contacts/use-contact-details";
 import { ArrowLeft, Edit, Trash2 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ContactDetails = () => {
    const { contact, handleDelete } = useContactDetails();
@@ -45,8 +46,10 @@ const ContactDetails = () => {
                <div className="absolute flex items-center gap-2 top-2 right-2">
                   <Tooltip>
                      <TooltipTrigger asChild>
-                        <Button size="sm" variant="ghost">
-                           <Edit />
+                        <Button asChild size="sm" variant="ghost">
+                           <Link to={routeConstants.editContact.replace(":id", data._id)}>
+                              <Edit />
+                           </Link>
                         </Button>
                      </TooltipTrigger>
 

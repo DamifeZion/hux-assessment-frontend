@@ -12,4 +12,5 @@ export const routeConstants = {
    dashboard: "/contact",
    addContact: "/contact/add",
    contactDetails: "/contact/details/:id",
+   editContact: "/contact/edit/:id"
 };
