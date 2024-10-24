@@ -65,7 +65,7 @@ const ContactDetails = () => {
                               <Button
                                  size="sm"
                                  variant="destructive"
-                                 className="bg-transparent text-destructive hover:bg-destructive text-destructive-foreground">
+                                 className="bg-transparent !text-destructive hover:bg-destructive text-destructive-foreground">
                                  <Trash2 />
                               </Button>
                            </AlertDialogTrigger>

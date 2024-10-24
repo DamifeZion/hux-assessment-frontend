@@ -40,8 +40,8 @@ export const useLogin = () => {
             body: values,
          }).unwrap();
          
-         toast.success(res.message);
          dispatch(setUser(res.data));
+         toast.success(res.message);
 
          navigate(routeConstants.dashboard);
          form.reset();

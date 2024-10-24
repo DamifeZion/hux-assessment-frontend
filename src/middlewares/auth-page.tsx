@@ -5,6 +5,7 @@ import { RootState } from "@/services/store";
 import { setUser } from "@/services/slices/user-slice";
 import { routeConstants } from "@/constants/route-const";
 import { jwtDecode } from "jwt-decode";
+import GlobalLoading from "@/components/global-loading";
 
 type TAuthPageProps = {
    children: React.ReactNode;
@@ -41,13 +42,12 @@ const AuthPage: React.FC<TAuthPageProps> = ({ children }) => {
    }, [user, dispatch]);
 
    if (isSessionValid === null) {
-      // Still checking token validity
-      return null;  // or a loading indicator
+      return <GlobalLoading />;
    }
 
    if (isSessionValid === false) {
-      // Invalid session, redirect to login
-      return <Navigate to={routeConstants.login} replace state={{ from: location }} />;
+      // Invalid session, redirect to login and clear cached data
+      return window.location.replace(routeConstants.login);
    }
 
    // Session is valid, render the children (protected content)
