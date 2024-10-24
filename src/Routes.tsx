@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Routes as Router, Route, Navigate } from 'react-router-dom'
+import { Routes as Router, Route } from 'react-router-dom'
 import { routeConstants } from './constants/route-const';
 import GlobalLoading from './components/global-loading';
 import useScrollToTop from '@/hooks/shared/use-scroll-to-top';

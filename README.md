@@ -1,50 +1,97 @@
-# React + TypeScript + Vite
+# Contactly
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a React application using Vite as the build tool, combined with TypeScript for static typing, and ESLint for code linting and style enforcement. Vite provides fast builds and instant hot module replacement (HMR), making it an excellent choice for modern front-end development.
 
-Currently, two official plugins are available:
+## Prerequisites
 
--  [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
--  [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Make sure you have the following installed on your system:
 
-## Expanding the ESLint configuration
+-  Node.js: Download and install the LTS version (14.x or higher recommended).
+-  npm: Node's package manager comes bundled with Node.js.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Getting Started
 
--  Configure the top-level `parserOptions` property like this:
+1. Clone the repository
 
-```js
-export default tseslint.config({
-   languageOptions: {
-      // other options...
-      parserOptions: {
-         project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-         tsconfigRootDir: import.meta.dirname,
-      },
-   },
-});
+   ```bash
+      https://github.com/DamifeZion/hux-assessment-frontend.git
+   ```
+
+2. Install dependencies
+   Install the required dependencies using npm or yarn:
+
+   ```bash
+      # With npm
+      npm install
+
+      # With yarn
+      yarn install
+   ```
+
+3. Run the development server
+   Start the Vite development server:
+
+```bash
+      # With npm
+      npm run dev
+
+      # With yarn
+      yarn dev
+
 ```
 
--  Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
--  Optionally add `...tseslint.configs.stylisticTypeChecked`
--  Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Open the application in your browser by navigating to:
 
-```js
-// eslint.config.js
-import react from "eslint-plugin-react";
+```bash
+   http://localhost:5173
+```
 
-export default tseslint.config({
-   // Set the react version
-   settings: { react: { version: "18.3" } },
-   plugins: {
-      // Add the react plugin
-      react,
-   },
-   rules: {
-      // other rules...
-      // Enable its recommended rules
-      ...react.configs.recommended.rules,
-      ...react.configs["jsx-runtime"].rules,
-   },
-});
+4. Build for production
+   To create an optimized production build, run:
+
+```bash
+      # With npm
+      npm run build
+
+      # With yarn
+      yarn build
+
+```
+
+5. Preview the production build
+   Once you've built the application, you can preview it locally with:
+
+```bash
+      # With npm
+      npm run preview
+
+      # With yarn
+      yarn preview
+
+```
+
+This serves the production build locally on http://localhost:4173 to inspect and test the build output.
+
+## Linting and Formatting
+
+The project includes an ESLint configuration to ensure code quality and consistency.
+
+### Run ESLint
+
+```bash
+      # With npm
+      npm run lint
+
+      # With yarn
+      yarn lint
+```
+
+This will run ESLint checks on the source files.
+
+## Environment Variables
+
+You can set up environment variables in a .env file at the root of the project. Vite uses these variables during the build process. An example might look like:
+
+```bash
+   VITE_API_BASE_URL=https://hux-assessment-backend-5ul7.onrender.com/api/v1
 ```
