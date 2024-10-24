@@ -10,6 +10,7 @@ import GuestPage from './middlewares/guest-page';
 
 
 /** Lazy Imports  */
+const Home = React.lazy(() => import("@/pages/home"))
 const NotFound = React.lazy(() => import("@/pages/not-found"));
 
 /** Un-Auth Imports */
@@ -43,9 +44,13 @@ const Routes = () => {
 
                   <Route
                      index
-                     element={<Navigate to={routeConstants.home} />}
+                     path={routeConstants.home}
+                     element={
+                        <GuestPage>
+                           <Home />
+                        </GuestPage>
+                     }
                   />
-
                   <Route
                      path={routeConstants.login}
                      element={

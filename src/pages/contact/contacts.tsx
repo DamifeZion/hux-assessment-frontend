@@ -32,7 +32,7 @@ const Contacts = () => {
          </div>
          <div>
             <Typography className="font-medium text-primary">
-               {user.email}
+               {user?.email}
             </Typography>
             
             <Button asChild size="sm" className="mt-6 min-[402px]:hidden">
