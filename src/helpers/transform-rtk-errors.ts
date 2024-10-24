@@ -18,7 +18,7 @@ export const transformErrorResponse = (err: FetchBaseQueryError) => {
    if (err.status === 404) {
       // Narrow down the type of err.data
       if (isErrorResponse(err.data)) {
-         toast.error(`Error: ${err.data.statusMessage || "Invalid API"}`);
+         toast.error(`Error: ${err.data.message || "Invalid API"}`);
       } else {
          toast.error("Invalid API endpoint or resource not found.");
       }

@@ -1,11 +1,15 @@
 export const ENDPOINT = {
-   LOGIN: "/login",
-   SIGN_UP: "/signup",
-   VERIFY_EMAIL: "/verify_email",
-   GET_CONTACTS: "/contacts",
+   LOGIN: "/user/login",
+   SIGN_UP: "/user/register",
+   VERIFY_EMAIL: "/user/activate-account",
+   FORGOT_PASSWORD: "/user/forgot-password",
+   RESET_PASSWORD: "/user/reset_password/:token",
 
+   /** Contacts */
+   GET_CONTACTS: "/contact",
+   ADD_CONTACT: "/contact/add",
    /** Replace :id with the actual parameter in API endpoint */
-   CONTACT_DETAILS: "/contacts/:id",
-   EDIT_CONTACT: "/contacts/edit/:id",
-   DELETE_CONTACT: "/contacts/delete/:id",
+   CONTACT_DETAILS: "/contact/:id",
+   EDIT_CONTACT: "/contact/:id",
+   DELETE_CONTACT: "/contact/:id",
 };

@@ -13,7 +13,7 @@ export const Logo: React.FC<TLogo> = ({ ...props }) => {
 
    return (
       <Link
-         to={isAuthenticated ? routeConstants.contacts : routeConstants.home}
+         to={isAuthenticated ? routeConstants.dashboard : routeConstants.home}
       >
          <Typography variant="h3" {...props}>
             Contactly

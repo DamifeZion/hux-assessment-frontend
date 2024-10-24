@@ -3,21 +3,30 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 import { ENDPOINT } from "@/constants/endpoint-const";
-import { usePostRequestMutation } from "@/services/api/request";
+import { usePutRequestMutation } from "@/services/api/request";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { routeConstants } from "@/constants/route-const";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setEmail } from "@/services/slices/auth-slice";
+import { useNavigate, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "@/services/store";
+import { isJwtValid } from "@/helpers/is-jwt-valid";
 
 export type TVisibility = {
    password: false;
    confirmPassword: false;
 };
 
-export const useSignUp = () => {
+export const useResetPassword = () => {
    const navigate = useNavigate();
-   const dispatch = useDispatch();
+   const { token } = useParams();
+   const { email } = useSelector((state: RootState) => state.authSlice);
+
+   // Make sure there the user actually requested the token else redirect to login.
+   React.useLayoutEffect(() => {
+      if (!token || !email || !isJwtValid(token)) {
+         navigate(routeConstants.login);
+      }
+   }, [navigate, token, email]);
 
    const [visibility, setVisibility] = React.useState<TVisibility>({
       password: false,
@@ -26,9 +35,6 @@ export const useSignUp = () => {
 
    const formSchema = z
       .object({
-         email: z.string().email({
-            message: "Please enter a valid email",
-         }),
          password: z
             .string()
             .min(8, { message: "Password must be at least 8 characters long" })
@@ -61,26 +67,27 @@ export const useSignUp = () => {
    const form = useForm<z.infer<typeof formSchema>>({
       resolver: zodResolver(formSchema),
       defaultValues: {
-         email: "",
          password: "",
          confirmPassword: "",
       },
    });
 
-   const [postLoginForm, { isLoading }] = usePostRequestMutation();
+   const [putResetPasswordForm, { isLoading }] = usePutRequestMutation();
    const onSubmit = async (values: z.infer<typeof formSchema>) => {
       try {
-         const res = await postLoginForm({
-            url: ENDPOINT.SIGN_UP,
+         if (!token) {
+            toast.error("Invalid or missing token");
+            return;
+         }
+
+         const res = await putResetPasswordForm({
+            url: ENDPOINT.RESET_PASSWORD.replace(":token", token),
             body: values,
          }).unwrap();
 
          toast.success(res.message);
 
-         //Persist the email and phone for validation
-         dispatch(setEmail(values.email));
-
-         navigate(routeConstants.verifyEmail);
+         navigate(routeConstants.login);
          form.reset();
       } catch (error) {
          console.error(error);
@@ -100,5 +107,6 @@ export const useSignUp = () => {
       visibility,
       handlePasswordToggle,
       isLoading,
+      email,
    };
 };

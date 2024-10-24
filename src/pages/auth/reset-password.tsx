@@ -1,6 +1,4 @@
 import { useSetHelmet } from "@/hooks/shared/use-helmet";
-import { Link } from "react-router-dom";
-
 import { Button } from "@/components/ui/button";
 import {
    Card,
@@ -19,21 +17,20 @@ import {
    FormLabel,
    FormMessage,
 } from "@/components/ui/form";
-import { routeConstants } from "@/constants/route-const";
 import { EyeClosed, EyeIcon } from "lucide-react";
-import { useSignUp } from "@/hooks/auth/use-signup";
 import Typography from "@/components/ui/typography";
+import { useResetPassword } from "@/hooks/auth/use-reset-password";
 
-const SignUp = () => {
-   useSetHelmet("Sign up", [
+const ResetPassword = () => {
+   useSetHelmet("Reset Password", [
       {
          name: "description",
-         content: "Create your account to continue",
+         content: "Reset your account password",
       },
    ]);
 
-   const { form, onSubmit, handlePasswordToggle, isLoading, visibility } =
-      useSignUp();
+   const { form, onSubmit, handlePasswordToggle, isLoading, visibility, email } =
+      useResetPassword();
 
    return (
       <main className="flex items-center justify-center flex-1">
@@ -45,41 +42,14 @@ const SignUp = () => {
                <Card className="w-full max-w-sm mx-auto">
                   <CardHeader className="space-y-4">
                      <CardTitle className="text-2xl text-center">
-                        Sign up
+                        Reset Password
                      </CardTitle>
-
-                     <CardDescription className="text-sm text-center">
-                        Already have an account?{" "}
-                        <Link
-                           to={routeConstants.login}
-                           className="underline-offset-2 text-foreground hover:underline"
-                        >
-                           Sign in
-                        </Link>
+                     <CardDescription>
+                        Change account password for - {email}
                      </CardDescription>
                   </CardHeader>
 
                   <CardContent className="grid gap-6">
-                     <FormField
-                        name="email"
-                        control={form.control}
-                        render={({ field }) => (
-                           <FormItem>
-                              <FormLabel>Email</FormLabel>
-
-                              <FormControl>
-                                 <Input
-                                    type="email"
-                                    placeholder="damifezion@example.com"
-                                    {...field}
-                                 />
-                              </FormControl>
-
-                              <FormMessage />
-                           </FormItem>
-                        )}
-                     />
-
                      <FormField
                         name="password"
                         control={form.control}
@@ -209,7 +179,7 @@ const SignUp = () => {
                         isLoading={isLoading}
                         className="w-full"
                      >
-                        Sign up
+                        Continue
                      </Button>
                   </CardFooter>
                </Card>
@@ -219,4 +189,4 @@ const SignUp = () => {
    );
 };
 
-export default SignUp;
+export default ResetPassword;

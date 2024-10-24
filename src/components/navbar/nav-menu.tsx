@@ -4,14 +4,17 @@ import { Link } from "react-router-dom";
 import { getFilteredRoutes } from "@/helpers/get-filtered-routes";
 import { routeConstants } from "@/constants/route-const";
 import { cn } from "@/lib/utils";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/services/store";
+import { setUser } from "@/services/slices/user-slice";
+import { LogOutIcon } from "lucide-react";
 
 type NavMenuProp = {
    closeSheet?: () => void;
 };
 
 export const NavMenu = ({ closeSheet }: NavMenuProp) => {
+   const dispatch = useDispatch();
    const { user } = useSelector((state: RootState) => state.userSlice);
 
    const isAuthenticated = !!user?.token;
@@ -59,6 +62,12 @@ export const NavMenu = ({ closeSheet }: NavMenuProp) => {
                   </li>
                );
             })}
+
+            {isAuthenticated && (
+               <Button variant="destructive" onClick={() => dispatch(setUser(null))}>
+                 <LogOutIcon/> Log out
+               </Button>
+            )}
          </ul>
       </div>
    );

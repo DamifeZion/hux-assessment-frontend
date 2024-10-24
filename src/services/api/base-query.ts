@@ -5,14 +5,15 @@ import { getEnv } from "@/helpers/get-env";
 
 export const baseServerUrl = getEnv("VITE_API_BASE_URL");
 
-export const hunnovateBaseQuery = fetchBaseQuery({
+export const baseQuery = fetchBaseQuery({
    baseUrl: baseServerUrl,
 
    prepareHeaders: (headers, { getState }) => {
       headers.set("accept", "application/json");
 
       const state = getState() as RootState;
-      const token = state.userSlice;
+      const { user } = state.userSlice;
+      const token = user?.token;
 
       if (token && !headers.has("Authorization")) {
          headers.set("Authorization", `Bearer ${token}`);

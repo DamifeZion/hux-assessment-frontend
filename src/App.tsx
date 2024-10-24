@@ -11,7 +11,7 @@ function App() {
    return (
       <Provider store={store}>
          <PersistGate persistor={persistor}>
-            <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+            <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
                <BrowserRouter>
                   <TooltipProvider delayDuration={100}>
                      <Routes />

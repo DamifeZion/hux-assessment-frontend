@@ -4,10 +4,12 @@ export const routeConstants = {
    signup: "/signup",
    forgotPassword: "/forgot-password",
    verifyEmail: "/email-verification",
+   resetPassword: "/:token/reset-password",
 
    home: "/",
 
    /** Authenticated Routes */
    dashboard: "/contact",
-   contactDetails: "/contact/:id",
+   addContact: "/contact/add",
+   contactDetails: "/contact/details/:id",
 };

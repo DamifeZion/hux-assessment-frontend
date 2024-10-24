@@ -1,5 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { hunnovateBaseQuery } from "./base-query";
+import { baseQuery } from "./base-query";
 import { transformErrorResponse } from "@/helpers/transform-rtk-errors";
 
 export type TFetchRequest = {
@@ -9,7 +9,7 @@ export type TFetchRequest = {
 };
 
 export const requestApi = createApi({
-   baseQuery: hunnovateBaseQuery,
+   baseQuery: baseQuery,
    reducerPath: "requestApi",
    tagTypes: ["Data"],
 
